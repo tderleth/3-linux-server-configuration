@@ -12,7 +12,9 @@ This repo is part of a series of projects belonging to my Full Stack Web Develop
 
 ### Login
 
--   Run `ssh -i "udacity.pem" ubuntu@63.32.57.102 -p 2200`
+| User   | Command                                            |
+| :----- | :------------------------------------------------- |
+| Ubuntu | `ssh -i "udacity.pem" ubuntu@63.32.57.102 -p 2200` |
 
 ## Command history
 
