@@ -14,7 +14,21 @@ This repo is part of a series of projects belonging to my Full Stack Web Develop
 
 -   Run `ssh -i "udacity.pem" ubuntu@63.32.57.102 -p 2200`
 
-## Summary
+## Command history
+
+    # Update server
+    sudo apt-get update 									# update list of packages
+    sudo apt-get upgrade 									# upgrade packages
+
+    # Secure server
+    sudo nano /etc/ssh/sshd_config 				# change port to 2200
+    sudo service sshd restart 						# restart service to pick new port
+    sudo ufw default deny incoming 				# Deny all incoming connections
+    sudo ufw default allow outgoing 			# Allow all outgoing connections
+    sudo ufw allow 2200/tcp								# Allow ssh on port 2200
+    sudo ufw allow www										# Allow connections on port 80 using http	
+    sudo ufw allow ntp										# Allow ntp connections
+     
 
 ### Get server
 
