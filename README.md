@@ -141,7 +141,7 @@ git clone https://github.com/tderleth/2-item-catalog.git .
 ### Deploy Todo List project
 
 -   [x]  Clone and setup your Todo List project from the Github repository you created earlier in this Nanodegree program.
--   [ ]  Set it up in your server so that it functions correctly when visiting your server’s IP address in a browser. 
+-   [ ]  Set it up in your server so that it functions correctly when visiting your server’s IP address in a browser. (Docs: <http://flask.pocoo.org/docs/0.12/deploying/mod_wsgi/>)
 -   [ ]  Make sure that your .git directory is not publicly accessible via a browser!
 
 ## Third-party resources
