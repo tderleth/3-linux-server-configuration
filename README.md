@@ -12,9 +12,12 @@ This repo is part of a series of projects belonging to my Full Stack Web Develop
 
 ### Login
 
-| User   | Command                                            |
-| :----- | :------------------------------------------------- |
-| Ubuntu | `ssh -i "udacity.pem" ubuntu@63.32.57.102 -p 2200` |
+| User   | Command                                                        |
+| :----- | :------------------------------------------------------------- |
+| ubuntu | `ssh ubuntu@63.32.57.102 -p 2200 -i {path-to-private-key.pem}` |
+| grader | `ssh grader@63.32.57.102 -p 2200 -i {path-to-private-key}`     |
+
+_(Grader private key secret is literally secret.)_
 
 ## Command history
 
@@ -25,6 +28,7 @@ This repo is part of a series of projects belonging to my Full Stack Web Develop
 sudo apt-get update 
 # upgrade packages
 sudo apt-get upgrade
+
 
 ### Secure server
 
@@ -43,7 +47,29 @@ sudo ufw allow www
 # Allow ntp connections
 sudo ufw allow ntp								
 # Enable ufw
-sudo ufw enable	
+sudo ufw enable
+
+
+### Grader account & access
+
+# Add new user named grader
+sudo adduser grader
+# grant grader user sudo permissions
+sudo cp /etc/sudoers.d/90-cloud-init-users /etc/sudoers.d/grader
+sudo nano /etc/sudoers.d/grader
+# Install public key 
+sudo mkdir /home/grader/.ssh
+echo {public_key_content} > /home/grader/.ssh/authorised_keys
+# Change permissions on ".ssh" directory
+sudo chmod 700 .ssh
+# Change permissions on "authorised_keys" file
+sudo chmod 644  /home/grader/.ssh/authorised_keys
+# Change "PasswordAuthentication yes" in "/etc/ssh/sshd_config"
+sudo nano /etc/ssh/sshd_config
+# Restart ssh service
+sudo service ssh restart
+# Check if login works from localhost
+ssh grader@63.32.57.102 -p 2200 -i {path-to-private-key}
 ```
 
 ### Get server
@@ -59,9 +85,9 @@ sudo ufw enable
 
 ### Grader access
 
--   [ ]  Create a new user account named grader.
--   [ ]  Give grader the permission to sudo.
--   [ ]  Create an SSH key pair for grader using the `ssh-keygen` tool.
+-   [x]  Create a new user account named grader.
+-   [x]  Give grader the permission to sudo.
+-   [x]  Create an SSH key pair for grader using the `ssh-keygen` tool.
 
 ### Prepare to deploy your project
 
