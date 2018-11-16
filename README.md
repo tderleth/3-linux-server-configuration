@@ -7,8 +7,12 @@ This repo is part of a series of projects belonging to my Full Stack Web Develop
 | property   | value        |
 | :--------- | :----------- |
 | IP address | 63.32.57.102 |
-| port       | 22           |
+| port       | 2200         |
 | URL        | 63.32.57.102 |
+
+### Login
+
+-   Run `ssh -i "udacity.pem" ubuntu@63.32.57.102 -p 2200`
 
 ## Summary
 
@@ -20,10 +24,8 @@ This repo is part of a series of projects belonging to my Full Stack Web Develop
 ### Secure server
 
 -   [x]  Update all currently installed packages.
--   [ ]  Change the SSH port from 22 to 2200. Make sure to configure the Lightsail firewall to allow it.
--   [ ]  Configure the Uncomplicated Firewall (UFW) to only allow incoming connections for SSH (port 2200), HTTP (port 80), and NTP (port 123).
-
-_Warning: When changing the SSH port, make sure that the firewall is open for port 2200 first, so that you don't lock yourself out of the server. When you change the SSH port, the Lightsail instance will no longer be accessible through the web app 'Connect using SSH' button. The button assumes the default port is being used. There are instructions on the same page for connecting from your terminal to the instance. Connect using those instructions and then follow the rest of the steps._
+-   [x]  Change the SSH port from 22 to 2200. Make sure to configure the Lightsail firewall to allow it.
+-   [x]  Configure the Uncomplicated Firewall (UFW) to only allow incoming connections for SSH (port 2200), HTTP (port 80), and NTP (port 123).
 
 ### Grader access
 
