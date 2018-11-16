@@ -4,11 +4,11 @@ This repo is part of a series of projects belonging to my Full Stack Web Develop
 
 ## Instance
 
-| property   | value        |
-| :--------- | :----------- |
-| IP address | 63.32.57.102 |
-| port       | 2200         |
-| URL        | 63.32.57.102 |
+| property   | value                              |
+| :--------- | :--------------------------------- |
+| IP address | 63.32.57.102                       |
+| port       | 2200                               |
+| URL        | <http://udacity.thomasderleth.de/> |
 
 ### Login
 
@@ -76,6 +76,42 @@ ssh grader@63.32.57.102 -p 2200 -i {path-to-private-key}
 
 # Configure the local timezone to UTC.
 sudo timedatectl set-timezone UTC
+# Install apache2 
+sudo apt-get install apache2
+# Install mod-wsgi
+sudo apt-get install libapache2-mod-wsgi
+# Configure Apache to handle requests using the WSGI module (add "WSGIScriptAlias / /var/www/html/run.py" to conf)
+sudo nano /etc/apache2/sites-enabled/000-default.conf
+# Restart apache 
+sudo apache2ctl restart
+# Install PostreSQL 
+sudo apt-get install postgresql
+# Create database user 
+sudo -u postgres createuser catalog
+# Login to PostgreSQL command-line interface
+sudo -u postgres psql
+# Check if user was created
+\du
+# Create database 
+sudo -u postgres createdb catalog
+# Login to PostgreSQL command-line interface
+sudo -u postgres psql
+# Check if database was created
+\l
+# Login to PostgreSQL command-line interface
+sudo -u postgres psql
+# Grant access rights
+grant all privileges on database catalog to catalog;
+
+
+### Deploy Todo List project
+
+# adjust folder permissions to clone into this folder
+sudo chmod 777 /var/www/html
+# Change to html folder
+cd /var/www/html
+# clone repo
+git clone https://github.com/tderleth/2-item-catalog.git .
 ```
 
 ### Get server
@@ -98,13 +134,13 @@ sudo timedatectl set-timezone UTC
 ### Prepare to deploy the project
 
 -   [x]  Configure the local timezone to UTC.
--   [ ]  Install and configure Apache to serve a Python `mod_wsgi` application.
--   [ ]  Install and configure PostgreSQL (Create a new database user named catalog that has limited permissions to your catalog application database).
--   [ ]  Install git.
+-   [x]  Install and configure Apache to serve a Python `mod_wsgi` application.
+-   [x]  Install and configure PostgreSQL (Create a new database user named catalog that has limited permissions to your catalog application database).
+-   [x]  Install git.
 
 ### Deploy Todo List project
 
--   [ ]  Clone and setup your Todo List project from the Github repository you created earlier in this Nanodegree program.
+-   [x]  Clone and setup your Todo List project from the Github repository you created earlier in this Nanodegree program.
 -   [ ]  Set it up in your server so that it functions correctly when visiting your server’s IP address in a browser. 
 -   [ ]  Make sure that your .git directory is not publicly accessible via a browser!
 
