@@ -39,7 +39,9 @@ sudo ufw allow 2200/tcp
 # Allow connections on port 80 using http			
 sudo ufw allow www										
 # Allow ntp connections
-sudo ufw allow ntp									
+sudo ufw allow ntp								
+# Enable ufw
+sudo ufw enable	
 ```
 
 ### Get server
