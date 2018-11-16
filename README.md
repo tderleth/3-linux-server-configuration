@@ -70,6 +70,12 @@ sudo nano /etc/ssh/sshd_config
 sudo service ssh restart
 # Check if login works from localhost
 ssh grader@63.32.57.102 -p 2200 -i {path-to-private-key}
+
+
+### Prepare to deploy the project
+
+# Configure the local timezone to UTC.
+sudo timedatectl set-timezone UTC
 ```
 
 ### Get server
@@ -89,9 +95,9 @@ ssh grader@63.32.57.102 -p 2200 -i {path-to-private-key}
 -   [x]  Give grader the permission to sudo.
 -   [x]  Create an SSH key pair for grader using the `ssh-keygen` tool.
 
-### Prepare to deploy your project
+### Prepare to deploy the project
 
--   [ ]  Configure the local timezone to UTC.
+-   [x]  Configure the local timezone to UTC.
 -   [ ]  Install and configure Apache to serve a Python `mod_wsgi` application.
 -   [ ]  Install and configure PostgreSQL (Create a new database user named catalog that has limited permissions to your catalog application database).
 -   [ ]  Install git.
