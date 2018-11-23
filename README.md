@@ -28,6 +28,7 @@ _(Grader private key secret is literally secret.)_
 sudo apt-get update
 # upgrade packages
 sudo apt-get upgrade
+sudo apt-get dist-upgrade
 
 
 ### Secure server
