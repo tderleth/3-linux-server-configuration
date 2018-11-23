@@ -25,7 +25,7 @@ _(Grader private key secret is literally secret.)_
 ### Update server
 
 # update list of packages
-sudo apt-get update 
+sudo apt-get update
 # upgrade packages
 sudo apt-get upgrade
 
@@ -36,16 +36,18 @@ sudo apt-get upgrade
 sudo nano /etc/ssh/sshd_config 				
 # restart service to pick new port
 sudo service sshd restart 				
-# Deny all incoming connections		
+# Deny all incoming connections
 sudo ufw default deny incoming 	
-# Allow all outgoing connections			
+# Allow all outgoing connections
 sudo ufw default allow outgoing 		
-# Allow ssh on port 2200	
+# Allow ssh on port 2200
 sudo ufw allow 2200/tcp						
-# Allow connections on port 80 using http			
-sudo ufw allow www										
+# Allow connections on port 80 using http
+sudo ufw allow www
 # Allow ntp connections
-sudo ufw allow ntp								
+sudo ufw allow ntp
+# Remove default 22 (if set)
+sudo ufw delete deny 22
 # Enable ufw
 sudo ufw enable
 
@@ -57,7 +59,7 @@ sudo adduser grader
 # grant grader user sudo permissions
 sudo cp /etc/sudoers.d/90-cloud-init-users /etc/sudoers.d/grader
 sudo nano /etc/sudoers.d/grader
-# Install public key 
+# Install public key
 sudo mkdir /home/grader/.ssh
 echo {public_key_content} > /home/grader/.ssh/authorised_keys
 # Change permissions on ".ssh" directory
@@ -78,7 +80,7 @@ ssh grader@63.32.57.102 -p 2200 -i {path-to-private-key}
 
 # Configure the local timezone to UTC.
 sudo timedatectl set-timezone UTC
-# Install apache2 
+# Install apache2
 sudo apt-get install apache2
 # Install mod-wsgi
 sudo apt-get install libapache2-mod-wsgi
@@ -86,17 +88,17 @@ sudo apt-get install libapache2-mod-wsgi
 # WSGIDaemonProcess user=www-data group=www-data threads=5 python-home=/usr/local/lib/python2.7/dist-packages
 # WSGIScriptAlias / /var/www/html/run.wsgi
 sudo nano /etc/apache2/sites-enabled/000-default.conf
-# Restart apache 
+# Restart apache
 sudo apache2ctl restart
-# Install PostreSQL 
+# Install PostreSQL
 sudo apt-get install postgresql
-# Create database user 
+# Create database user
 sudo -u postgres createuser catalog
 # Login to PostgreSQL command-line interface
 sudo -u postgres psql
 # Check if user was created
 \du
-# Create database 
+# Create database
 sudo -u postgres createdb catalog
 # Login to PostgreSQL command-line interface
 sudo -u postgres psql
@@ -116,9 +118,9 @@ sudo chmod 777 /var/www/html
 cd /var/www/html
 # clone repo
 git clone https://github.com/tderleth/2-item-catalog.git .
-# Install pip 
+# Install pip
 sudo apt install python-pip
-# install python packages 
+# install python packages
 sudo pip install flask flask-httpauth flask-debugtoolbar packaging passlib sqlalchemy psycopg2-binary requests google-api-python-client
 # Change owner and permissions for html folder
 sudo chmod -R 755 html/
