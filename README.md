@@ -64,7 +64,9 @@ echo {public_key_content} > /home/grader/.ssh/authorised_keys
 sudo chmod 700 .ssh
 # Change permissions on "authorised_keys" file
 sudo chmod 644  /home/grader/.ssh/authorised_keys
-# Change "PasswordAuthentication yes" in "/etc/ssh/sshd_config"
+# Update "/etc/ssh/sshd_config"
+# "PasswordAuthentication yes"
+# "PermitRootLogin no"
 sudo nano /etc/ssh/sshd_config
 # Restart ssh service
 sudo service ssh restart
