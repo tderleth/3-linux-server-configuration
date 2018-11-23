@@ -62,7 +62,9 @@ sudo cp /etc/sudoers.d/90-cloud-init-users /etc/sudoers.d/grader
 sudo nano /etc/sudoers.d/grader
 # Install public key
 sudo mkdir /home/grader/.ssh
-echo {public_key_content} > /home/grader/.ssh/authorised_keys
+sudo echo {public_key_content} > /home/grader/.ssh/authorised_keys
+# update owner and group of new directory
+chown grader:grader -R .ssh/
 # Change permissions on ".ssh" directory
 sudo chmod 700 .ssh
 # Change permissions on "authorised_keys" file
